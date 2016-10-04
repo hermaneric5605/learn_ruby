@@ -1,22 +1,16 @@
-
-
-
 class Book
-  def title=(str)
-    words = str.split
-    new_title = ""
-    words.each_with_index do |word, index|
-      if word.length > 3 or index == 0 or word == "i"
-        new_title << word.capitalize
-      else
-        new_title << word
-      end
-      new_title << " "
-    end
-    @title = new_title.chop
-  end
+# write your code here
+    attr_accessor :title
 
-  def title
-    @title
-  end
+    def title
+        words = @title.split
+        words.map do |word|
+            not_capital = ["and", "in", "the", "of", "a", "an"]
+            unless (not_capital.include? word)
+                word.capitalize!
+            end
+        end
+        words[0].capitalize!
+        words.join(" ")
+    end
 end
